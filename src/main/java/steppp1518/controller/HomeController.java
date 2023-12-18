@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import steppp1518.beans.Client;
 import steppp1518.beans.User;
 import steppp1518.beans.UserService;
+import steppp1518.beans.Waste;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 @RestController
 @RequestMapping("/home")
@@ -17,7 +18,7 @@ public class HomeController {
     @Qualifier("userCollectionService")
     private UserService _user_service;
 
-    @GetMapping
+    @GetMapping("/get_client")
     private User getClient(@RequestBody String email) {
         return _user_service.getUser(email);
     }
@@ -25,12 +26,17 @@ public class HomeController {
     @PostMapping("/add_client")
     private ResponseEntity addClient(@RequestBody Client client) {
         _user_service.addUser(client);
-        System.out.print(_user_service.getUser(client.get_email()));
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/charge_procent")
-    private ResponseEntity chargeProcent() {
+    @PostMapping("/add_waste")
+    private ResponseEntity addWaste(@RequestBody Waste waste) {
+        _user_service.addWaste(waste);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/get_wastes")
+    private List<Waste> getWaste(@RequestBody String email) {
+        return _user_service.getWastes(email);
     }
 }

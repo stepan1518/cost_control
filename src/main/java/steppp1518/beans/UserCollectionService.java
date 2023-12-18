@@ -2,13 +2,16 @@ package steppp1518.beans;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
 public class UserCollectionService implements UserService {
     //Replace for Atomic
     private static Map<String, User> _users = new HashMap<>();
+    private static List<Waste> _wastes = new ArrayList<>();
     @Override
     public void addUser(final User user) {
         User data = null;
@@ -31,5 +34,15 @@ public class UserCollectionService implements UserService {
     @Override
     public synchronized User getUser(final String email) {
         return _users.get(email);
+    }
+
+    @Override
+    public synchronized List<Waste> getWastes(final String email) {
+        return _wastes.stream().filter(x -> x.get_email().equals(email)).toList();
+    }
+
+    @Override
+    public synchronized void addWaste(final Waste waste) {
+        _wastes.add(waste);
     }
 }
