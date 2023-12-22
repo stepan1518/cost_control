@@ -1,4 +1,6 @@
-package steppp1518.beans;
+package steppp1518.service;
+
+import steppp1518.beans.Category;
 
 import java.math.BigDecimal;
 

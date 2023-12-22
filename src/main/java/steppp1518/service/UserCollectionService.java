@@ -1,6 +1,7 @@
-package steppp1518.beans;
+package steppp1518.service;
 
 import org.springframework.stereotype.Component;
+import steppp1518.beans.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +10,7 @@ import java.util.Map;
 
 @Component
 public class UserCollectionService implements UserService {
-    //Replace for Atomic
+    //Replace to Atomic
     private static Map<String, User> _users = new HashMap<>();
     private static List<Waste> _wastes = new ArrayList<>();
     @Override

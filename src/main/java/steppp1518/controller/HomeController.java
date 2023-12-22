@@ -6,8 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import steppp1518.beans.Client;
 import steppp1518.beans.User;
-import steppp1518.beans.UserService;
-import steppp1518.beans.Waste;
+import steppp1518.service.UserService;
+import steppp1518.service.Waste;
 
 import java.util.List;
 
