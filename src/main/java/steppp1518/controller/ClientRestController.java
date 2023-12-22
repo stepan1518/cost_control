@@ -12,8 +12,8 @@ import steppp1518.service.Waste;
 import java.util.List;
 
 @RestController
-@RequestMapping("/home")
-public class HomeController {
+@RequestMapping(value = "/client")
+public class ClientRestController {
     @Autowired
     @Qualifier("userCollectionService")
     private UserService _user_service;
