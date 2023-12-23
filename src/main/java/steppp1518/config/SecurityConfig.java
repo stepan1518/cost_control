@@ -17,11 +17,13 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(final HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
+                        .requestMatchers("/registration", "/css/**").permitAll()
                         .anyRequest().authenticated()
                 ).formLogin(form -> form
                         .loginPage("/login")
                         .permitAll()
                 ).logout(logout -> logout.permitAll())
+                .csrf().disable()
                 .build();
     }
 

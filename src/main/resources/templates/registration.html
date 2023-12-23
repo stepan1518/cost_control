@@ -17,14 +17,14 @@
 <body>
 <div class="overlay">
     <!-- LOGN IN FORM by Omar Dsoky -->
-    <form th:action="@{/login}" method="post">
+    <form action="/registration" method="post">
         <!--   con = Container  for items in the form-->
         <div class="con">
             <!--     Start  header Content  -->
             <header class="head-form">
-                <h2>Log In</h2>
+                <h2>Sign up</h2>
                 <!--     A welcome message or an explanation of the login form -->
-                <p>login here using your email and password</p>
+                <p>sign up here using your email and password</p>
             </header>
             <!--     End  header Content  -->
             <br>
@@ -35,7 +35,7 @@
            <i class="fa fa-user-circle"></i>
          </span>
                 <!--   user name Input-->
-                <input class="form-input" id="txt-input" type="text" placeholder="Email" name="username" required>
+                <input class="form-input" id="txt-input" type="text" placeholder="Email" name="email" required>
 
                 <br>
 
@@ -56,15 +56,15 @@
                 <br>
                 <!--        buttons -->
                 <!--      button LogIn -->
-                <button class="log-in" type="submit"> Log In </button>
+                <button class="log-in" type="submit"> Sign up </button>
             </div>
 
             <!--   other buttons -->
             <div class="other">
-                <!--      Forgot Password button-->
                 <button class="btn submits frgt-pass" type="button">Forgot Password</button>
+                <!--      Forgot Password button-->
                 <!--     Sign Up button -->
-                <a href="/registration"><button class="btn submits sign-up" type="button">Sign Up
+                <a href="/login"><button class="btn submits sign-up" type="button">Sign In
                     <!--         Sign Up font icon -->
                     <i class="fa fa-user-plus" aria-hidden="true"></i>
                 </button></a>
