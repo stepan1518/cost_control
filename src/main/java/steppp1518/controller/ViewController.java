@@ -30,4 +30,7 @@ public class ViewController {
         System.out.println(client.getEmail());
         return "home_page";
     }
+
+    @RequestMapping("/wallet")
+    public String wallet() {return "wallet";}
 }
