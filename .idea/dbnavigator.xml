@@ -13,16 +13,16 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="13c244e8-75b0-49a2-a1b2-d6444e0abe02">
-      <console name="wastes_control" type="STANDARD" schema="" session="Main"><![CDATA[CREATE TABLE clients
-(
-    id    BIGSERIAL PRIMARY KEY ,
-    email VARCHAR(254) NOT NULL ,
-    password VARCHAR(100)  NOT NULL
-);
-
-INSERT INTO clients (id, password, email) VALUES
-(1, '1234', 'vpetrov@jr.com'),
-(2, '89218682aA', 'steppp1518@gmail.com');
+      <console name="wastes_control" type="STANDARD" schema="" session="Main"><![CDATA[--CREATE TABLE clients
+--(
+--    id    BIGSERIAL PRIMARY KEY ,
+--    email VARCHAR(254) NOT NULL ,
+--    password VARCHAR(100)  NOT NULL
+--);
+--
+--INSERT INTO clients (id, password, email) VALUES
+--(1, '1234', 'vpetrov@jr.com'),
+--(2, '89218682aA', 'steppp1518@gmail.com');
 
 --SELECT * FROM clients;]]></console>
     </connection>
@@ -35,6 +35,10 @@ INSERT INTO clients (id, password, email) VALUES
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="13c244e8-75b0-49a2-a1b2-d6444e0abe02" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="13c244e8-75b0-49a2-a1b2-d6444e0abe02" dataset="public.client" active-filter-id="" />
+    <filter-actions connection-id="13c244e8-75b0-49a2-a1b2-d6444e0abe02" dataset="public.clients" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
