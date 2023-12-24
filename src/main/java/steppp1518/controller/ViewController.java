@@ -1,12 +1,16 @@
 package steppp1518.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import steppp1518.service.Client;
+import steppp1518.database.Client;
+import steppp1518.database.ClientRepository;
 
 @Controller
 @RequestMapping(value = "/")
 public class ViewController {
+    @Autowired
+    private ClientRepository clientRepository;
     @RequestMapping("/")
     public String start_page() {return "redirect:/home";}
 
@@ -17,6 +21,7 @@ public class ViewController {
 
     @RequestMapping("/home")
     public String homePage() {
+        clientRepository.deleteAll();
         return "home_page";
     }
 
@@ -27,7 +32,7 @@ public class ViewController {
 
     @PostMapping("/registration")
     public String add_client(@ModelAttribute Client client) {
-        System.out.println(client.getEmail());
+        clientRepository.save(client);
         return "home_page";
     }
 

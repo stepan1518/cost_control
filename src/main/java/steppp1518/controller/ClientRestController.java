@@ -4,7 +4,7 @@
 //import org.springframework.beans.factory.annotation.Qualifier;
 //import org.springframework.http.ResponseEntity;
 //import org.springframework.web.bind.annotation.*;
-//import steppp1518.service.Client;
+//import steppp1518.beans.Client;
 //import steppp1518.service.UserService;
 //import steppp1518.service.Waste;
 //
