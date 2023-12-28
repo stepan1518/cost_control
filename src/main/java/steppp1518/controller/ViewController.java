@@ -1,7 +1,9 @@
 package steppp1518.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +25,8 @@ public class ViewController {
     }
 
     @RequestMapping("/home")
-    public String homePage() {
+    public String homePage(@AuthenticationPrincipal Client client, Model model) {
+        model.addAttribute("email", client.getEmail());
         return "home_page";
     }
 

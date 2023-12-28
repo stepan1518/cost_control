@@ -26,8 +26,8 @@ public class UserDBService implements UserService {
     }
 
     @Override
-    public void deleteUser(final Client client) {
-
+    public void deleteUser(final String email) {
+        clientRepository.deleteAll();
     }
 
     @Override
@@ -41,7 +41,6 @@ public class UserDBService implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Client client = findUser(username);
-        return new User(client.getEmail(), client.getPassword(), client.getRoles());
+        return findUser(username);
     }
 }
