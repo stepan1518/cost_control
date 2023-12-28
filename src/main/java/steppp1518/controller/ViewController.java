@@ -2,9 +2,11 @@ package steppp1518.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import steppp1518.database.Client;
-import steppp1518.database.ClientRepository;
 import steppp1518.service.UserService;
 
 @Controller

@@ -1,6 +1,12 @@
 package steppp1518.database;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Table(name = "clients")
@@ -9,8 +15,12 @@ public class Client {
     private String email;
     private String password;
 
-    public Client() {
+    @Transient
+    private Collection<Role> roles;
 
+    public Client() {
+        roles = new ArrayList<>();
+        roles.add(Role.USER);
     }
 
     public String getEmail() {
@@ -27,5 +37,9 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Collection<Role> getRoles() {
+        return roles;
     }
 }
