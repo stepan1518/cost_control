@@ -14,6 +14,7 @@ public class UserDBService implements UserService {
     private ClientRepository clientRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @Override
     public boolean addUser(final Client client) {
         synchronized (this) {
@@ -34,12 +35,13 @@ public class UserDBService implements UserService {
         return clientRepository.findByEmail(email);
     }
 
+
     private boolean hasUser(final String email) {
-        return clientRepository.findByEmail(email) != null;
+        return findUser(email) != null;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
         return findUser(username);
     }
 }
