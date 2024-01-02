@@ -4,9 +4,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import steppp1518.database.Role;
+import steppp1518.database.Waste;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 @Configuration
 @ComponentScan("steppp1518.beans")

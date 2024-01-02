@@ -1,6 +1,7 @@
 package steppp1518.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import steppp1518.service.UserService;
 @RequestMapping(value = "/")
 public class ViewController {
     @Autowired
+    @Qualifier("userDBService")
     private UserService userService;
     @RequestMapping("/")
     public String start_page() {return "redirect:/home";}

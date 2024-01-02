@@ -1,4 +1,4 @@
-package steppp1518.service;
+package steppp1518.database;
 
 public enum Category {
     ENTERTAINMENTS,

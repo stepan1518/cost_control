@@ -602,13 +602,33 @@
 <script src="js/custom.js"></script>
 
 <script type="text/javascript">
-            var options = {
-              series: [13, 43, 22],
+    // Формирование URL с параметрами
+    fetch('http://localhost:8080/client/get_wastes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'text/plain' // Устанавливаем тип контента как текст
+        },
+        body: 'steppp1518@gmail.com'
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Обработка полученных данных
+        let categories = new Map();
+        data.forEach(x => {
+            if (categories.has(x.category)) {
+                let sum = categories.get(x.category);
+                categories.set(x.category, sum + x.amount);
+            }
+            else categories.set(x.category, x.amount);
+        })
+
+        var options = {
+              series: [...categories.keys()].map(category => categories.get(category)),
               chart: {
               width: 380,
               type: 'pie',
             },
-            labels: ['Balance', 'Expense', 'Credit Loan',],
+            labels: [...categories.keys()],
             responsive: [{
               breakpoint: 480,
               options: {
@@ -624,6 +644,11 @@
 
             var chart = new ApexCharts(document.querySelector("#pie-chart"), options);
             chart.render();
+    })
+    .catch(error => {
+        // Обработка ошибок
+        console.error('Error:', error);
+    });
         </script>
 
 <script type="text/javascript">
