@@ -440,7 +440,7 @@
                             <strong>Email:</strong>
 
                             <a href="#">
-                                <span th:text="${email}" />
+                                <span id="email_value" th:text="${email}" />
                             </a>
                         </p>
 
@@ -608,7 +608,7 @@
         headers: {
             'Content-Type': 'text/plain' // Устанавливаем тип контента как текст
         },
-        body: 'steppp1518@gmail.com'
+        body: document.querySelector("#email_value").innerHTML
     })
     .then(response => response.json())
     .then(data => {

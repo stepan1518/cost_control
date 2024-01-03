@@ -26,12 +26,12 @@ public class UserDBService implements UserService {
     }
 
     @Override
-    public void deleteUser(final String email) {
+    public void removeUser(final String email) {
         clientRepository.deleteAll();
     }
 
     @Override
-    public Client findUser(final String email) {
+    public synchronized Client findUser(final String email) {
         return clientRepository.findByEmail(email);
     }
 
@@ -41,7 +41,7 @@ public class UserDBService implements UserService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
+    public synchronized UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
         return findUser(username);
     }
 }

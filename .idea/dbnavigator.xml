@@ -20,20 +20,17 @@
 --    password VARCHAR(100)  NOT NULL
 --);
 --
---INSERT INTO clients (id, password, email) VALUES
---(1, '1234', 'vpetrov@jr.com'),
---(2, '89218682aA', 'steppp1518@gmail.com');
+--INSERT INTO wastes (email, password, category, amount, date) VALUES
+--('user', 5, 200, '3 янв. 2024 г., 00:42:15');
 
-SELECT * FROM wastes;]]></console>
+--SELECT * FROM wastes;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="13c244e8-75b0-49a2-a1b2-d6444e0abe02" object-ref="consoles/wastes_control" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="13c244e8-75b0-49a2-a1b2-d6444e0abe02" />

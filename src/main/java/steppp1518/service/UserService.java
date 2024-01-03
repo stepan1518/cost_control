@@ -6,7 +6,7 @@ import steppp1518.database.Client;
 public interface UserService extends UserDetailsService {
     boolean addUser(final Client client);
 
-    void deleteUser(final String email);
+    void removeUser(final String email);
 
     Client findUser(final String email);
 }
