@@ -13,13 +13,17 @@ public class Waste implements Cloneable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    @Autowired
     private Date date;
     private Category category;
     private String email;
     private BigDecimal amount;
     @Version
     private Long version;
+
+    @PrePersist
+    public void prePersist() {
+        date = new Date();
+    }
 
     public BigDecimal getAmount() {
         return amount;
@@ -56,5 +60,9 @@ public class Waste implements Cloneable {
     @Override
     public Waste clone() throws CloneNotSupportedException {
         return (Waste)super.clone();
+    }
+
+    public UUID getId() {
+        return id;
     }
 }

@@ -2,6 +2,7 @@ package steppp1518.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import steppp1518.database.Role;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class ClientConfig {
     }
 
     @Bean
+    @Scope("prototype")
     public Date getDate() {
         return new Date();
     }
