@@ -7,6 +7,4 @@ public interface UserService extends UserDetailsService {
     boolean addUser(final Client client);
 
     void removeUser(final String email);
-
-    Client findUser(final String email);
 }

@@ -37,13 +37,7 @@ public class UserDBService implements UserService {
 
     @Transactional
     @Override
-    public Client findUser(final String email) {
-        return clientRepository.findByEmail(email);
-    }
-
-    @Transactional
-    @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
-        return findUser(username);
+        return clientRepository.findByEmail(username);
     }
 }
