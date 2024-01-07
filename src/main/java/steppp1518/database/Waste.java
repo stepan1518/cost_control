@@ -17,8 +17,6 @@ public class Waste implements Cloneable {
     private Category category;
     private String email;
     private BigDecimal amount;
-    @Version
-    private Long version;
 
     @PrePersist
     public void prePersist() {

@@ -20,7 +20,6 @@ public class UserDBService implements UserService {
     @Transactional
     @Override
     public boolean addUser(final Client client) {
-        if (hasUser(client.getEmail())) return false;
         client.setPassword(passwordEncoder.encode(client.getPassword()));
         try {
             clientRepository.save(client);
@@ -40,10 +39,6 @@ public class UserDBService implements UserService {
     @Override
     public Client findUser(final String email) {
         return clientRepository.findByEmail(email);
-    }
-
-    private boolean hasUser(final String email) {
-        return findUser(email) != null;
     }
 
     @Transactional

@@ -13,8 +13,6 @@ public class Client implements UserDetails {
     @Id
     private String email;
     private String password;
-    @Version
-    private Long version;
 
     @Autowired
     @Transient

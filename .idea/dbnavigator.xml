@@ -23,7 +23,7 @@
 --INSERT INTO wastes (email, password, category, amount, date) VALUES
 --('user', 5, 200, '3 янв. 2024 г., 00:42:15');
 
---SELECT * FROM wastes WHERE email='abcd';
+--SELECT * FROM wastes;
 
 --DELETE FROM wastes WHERE email='abcd';]]></console>
     </connection>
