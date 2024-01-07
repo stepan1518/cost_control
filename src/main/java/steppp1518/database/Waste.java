@@ -1,6 +1,7 @@
 package steppp1518.database;
 
 import jakarta.persistence.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -10,19 +11,15 @@ import java.util.UUID;
 @Table(name = "wastes")
 public class Waste implements Cloneable {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    @Autowired
     private Date date;
     private Category category;
     private String email;
     private BigDecimal amount;
     @Version
     private Long version;
-
-    @PrePersist
-    public void prePersist() {
-        date = new Date();
-        id = UUID.randomUUID();
-    }
 
     public BigDecimal getAmount() {
         return amount;
