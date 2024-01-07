@@ -1,5 +1,6 @@
 package steppp1518.service;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import steppp1518.database.Waste;
@@ -12,9 +13,9 @@ import java.util.Date;
 public class WastesDBService implements WastesService {
     @Autowired
     WastesRepository wastesRepository;
+    @Transactional
     @Override
-    public synchronized void addWaste(final Waste waste) {
-        waste.setDate(new Date());
+    public void addWaste(final Waste waste) {
         wastesRepository.save(waste);
     }
 
@@ -23,13 +24,14 @@ public class WastesDBService implements WastesService {
 
     }
 
+    @Transactional
     @Override
     public void removeWastesForEmail(final String email) {
-
     }
 
+    @Transactional
     @Override
-    public synchronized Collection<Waste> getWastes(final String email) {
+    public Collection<Waste> getWastes(final String email) {
         return wastesRepository.findByEmail(email);
     }
 }

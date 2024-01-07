@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import steppp1518.database.Category;
 import steppp1518.database.Waste;
 import steppp1518.database.WastesRepository;
+import steppp1518.service.WastesService;
 
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -14,7 +15,7 @@ import java.util.Date;
 @SpringBootTest
 public class WastesTest {
     @Autowired
-    WastesRepository wastesRepository;
+    WastesService wastesService;
 
 //    @Test
 //    public void add_waste() {
@@ -29,9 +30,35 @@ public class WastesTest {
 //        assert true;
 //    }
 
+//    @Test
+//    public void get_wastes() {
+//        wastesRepository.deleteAll();
+//        Collection<Waste> wastes = wastesService.getWastes("abcd");
+//        assert wastes.size() == 0;
+//    }
+
     @Test
-    public void get_wastes() {
-        Collection<Waste> wastes = wastesRepository.findByEmail("user");
-        assert wastes.size() == 1;
+    public void add_wastes() throws CloneNotSupportedException, InterruptedException {
+//        for (int i = 0; i < 100; i++) {
+//            var waste1 = new Waste();
+//            waste1.setAmount(new BigDecimal(100.0));
+//            waste1.setCategory(Category.SUPERMARKETS);
+//            waste1.setEmail("abcd");
+//
+//            var waste2 = new Waste();
+//            waste1.setAmount(new BigDecimal(100.0));
+//            waste1.setCategory(Category.FAST_FOOD);
+//            waste1.setEmail("abcd");
+//
+//            var waste3 = new Waste();
+//            waste1.setAmount(new BigDecimal(100.0));
+//            waste1.setCategory(Category.STUDY);
+//            waste1.setEmail("abcd");
+//
+//            new Thread(() -> {wastesService.addWaste(waste1);}).start();
+//            new Thread(() -> {wastesService.addWaste(waste2);}).start();
+//            new Thread(() -> {wastesService.addWaste(waste3);}).start();
+//        }
+//        wastesService.removeWastesForEmail("abcd");
     }
 }

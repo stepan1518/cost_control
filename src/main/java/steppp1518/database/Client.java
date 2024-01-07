@@ -1,9 +1,6 @@
 package steppp1518.database;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +13,8 @@ public class Client implements UserDetails {
     @Id
     private String email;
     private String password;
+    @Version
+    private Long version;
 
     @Autowired
     @Transient

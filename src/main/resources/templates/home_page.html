@@ -603,13 +603,7 @@
 
 <script type="text/javascript">
     // Формирование URL с параметрами
-    fetch('http://localhost:8080/client/get_wastes', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'text/plain' // Устанавливаем тип контента как текст
-        },
-        body: document.querySelector("#email_value").innerHTML
-    })
+    fetch('http://localhost:8080/client/get_wastes')
     .then(response => response.json())
     .then(data => {
         // Обработка полученных данных

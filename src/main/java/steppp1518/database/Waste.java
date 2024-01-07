@@ -1,20 +1,28 @@
 package steppp1518.database;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table(name = "wastes")
-public class Waste {
+public class Waste implements Cloneable {
     @Id
+    private UUID id;
     private Date date;
     private Category category;
     private String email;
     private BigDecimal amount;
+    @Version
+    private Long version;
+
+    @PrePersist
+    public void prePersist() {
+        date = new Date();
+        id = UUID.randomUUID();
+    }
 
     public BigDecimal getAmount() {
         return amount;
@@ -46,5 +54,10 @@ public class Waste {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @Override
+    public Waste clone() throws CloneNotSupportedException {
+        return (Waste)super.clone();
     }
 }
