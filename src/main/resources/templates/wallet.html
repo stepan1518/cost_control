@@ -267,7 +267,7 @@ Bootstrap 5 Dashboard Admin Template
                     </div>
                 </nav>
 
-                <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+                <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start" id="app">
                     <div class="title-group mb-3">
                         <h1 class="h2 mb-0">Wallet</h1>
                     </div>
@@ -275,7 +275,16 @@ Bootstrap 5 Dashboard Admin Template
                     <div class="row my-4">
                         <div class="col-lg-12 col-12">
                             <div class="custom-block bg-white">
-                                <h5 class="mb-4">Account Activities</h5>
+                                <h5 class="mb-4">Transactions</h5>
+
+                                <select v-model="view_transactions_count">
+                                    <option disabled value="">Please select one</option>
+                                    <option>10</option>
+                                    <option>20</option>
+                                    <option>50</option>
+                                    <option>100</option>
+                                  </select>
+                                  <span>Selected: {{ view_transactions_count }}</span>
 
                                 <div class="table-responsive">
                                     <table class="account-table table">
@@ -283,15 +292,9 @@ Bootstrap 5 Dashboard Admin Template
                                             <tr>
                                                 <th scope="col">Date</th>
 
-                                                <th scope="col">Time</th>
-
-                                                <th scope="col">Description</th>
-
                                                 <th scope="col">Payment Type</th>
 
                                                 <th scope="col">Amount</th>
-
-                                                <th scope="col">Balance</th>
 
                                                 <th scope="col">Status</th>
 
@@ -299,21 +302,15 @@ Bootstrap 5 Dashboard Admin Template
                                         </thead>
 
                                         <tbody>
-                                            <tr>
-                                                <td scope="row">July 5, 2023</td>
+                                            <tr v-for="waste in getWastes" :key="waste.id">
+                                                <td scope="row"> {{ waste.date }}</td>
 
-                                                <td scope="row">10:00 PM</td>
-
-                                                <td scope="row">Shopping</td>
-
-                                                <td scope="row">C2C Transfer</td>
+                                                <td scope="row">{{ waste.category }}</td>
 
                                                 <td class="text-danger" scope="row">
                                                     <span class="me-1">-</span>
-                                                    $100.00
+                                                    {{ waste.amount }}
                                                 </td>
-
-                                                <td scope="row">$5,500.00</td>
 
                                                 <td scope="row">
                                                     <span class="badge text-bg-danger">
@@ -322,7 +319,7 @@ Bootstrap 5 Dashboard Admin Template
                                                 </td>
                                             </tr>
 
-                                            <tr>
+                                            <!-- <tr>
                                                 <td scope="row">July 2, 2023</td>
 
                                                 <td scope="row">10:42 AM</td>
@@ -511,39 +508,28 @@ Bootstrap 5 Dashboard Admin Template
                                                         Pending
                                                     </span>
                                                 </td>
-                                            </tr>
+                                            </tr> -->
                                         </tbody>
                                     </table>
                                 </div>
 
                                 <nav aria-label="Page navigation example">
                                         <ul class="pagination justify-content-center mb-0">
-                                            <li class="page-item">
-                                                <a class="page-link" href="#" aria-label="Previous">
+                                            <li class="page-item" v-on:click="prevPages">
+                                                <div class="page-link" style="cursor: pointer;">
                                                     <span aria-hidden="true">Prev</span>
-                                                </a>
+                                                </div>
                                             </li>
 
-                                            <li class="page-item active" aria-current="page">
-                                                <a class="page-link" href="#">1</a>
+                                            <li class="page-item" v-bind:class="{ active: page == cur_page }" aria-current="page"
+                                             v-for="cur_page in pages" :key="cur_page" v-on:click="page = cur_page">
+                                                <div class="page-link" style="cursor: pointer;">{{ cur_page }}</div>
                                             </li>
                                             
-                                            <li class="page-item">
-                                                <a class="page-link" href="#">2</a>
-                                            </li>
-                                            
-                                            <li class="page-item">
-                                                <a class="page-link" href="#">3</a>
-                                            </li>
-
-                                            <li class="page-item">
-                                                <a class="page-link" href="#">4</a>
-                                            </li>
-                                            
-                                            <li class="page-item">
-                                                <a class="page-link" href="#" aria-label="Next">
+                                            <li class="page-item" v-on:click="nextPages">
+                                                <div class="page-link" style="cursor: pointer;">
                                                     <span aria-hidden="true">Next</span>
-                                                </a>
+                                                </div>
                                             </li>
                                         </ul>
                                     </nav>
@@ -554,7 +540,7 @@ Bootstrap 5 Dashboard Admin Template
                             <div class="custom-block custom-block-balance">
                                 <small>Your Balance</small>
 
-                                <h2 class="mt-2 mb-3">$254,800</h2>
+                                <h2 class="mt-2 mb-3">${{ getBalance }}</h2>
 
                                 <div class="custom-block-numbers d-flex align-items-center">
                                     <span>****</span>
@@ -696,5 +682,73 @@ Bootstrap 5 Dashboard Admin Template
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/apexcharts.min.js"></script>
         <script src="js/custom.js"></script>
+        <script src="js/vue.js"></script>
+        <script type="module">
+            
+            //JS CODE
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    VIEW_PAGE_BUTTON_COUNT : 4,
+
+                    message: 'Hello Vue!',
+                    wastes : null,
+                    page : 1,
+                    view_transactions_count : 10,
+                    pages : []
+                },
+                mounted : function() {
+                    fetch('http://localhost:8080/client/get_wastes')
+                    .then(response => response.json())
+                    .then(data => this.wastes = data);
+                },
+                computed : {
+                    getBalance() {
+                        let balance = 0;
+                        this.wastes?.forEach(waste => balance -= waste.amount);
+                        return balance;
+                    },
+                    getWastes() {
+                        return this.wastes?.slice((this.page - 1) * this.view_transactions_count,
+                         Math.min(this.page * this.view_transactions_count,
+                         this.wastes?.length));
+                    },
+                    getPagesCount() {
+                        return Math.ceil((this.wastes?.length ?? 0) / this.view_transactions_count);
+                    },
+                    getScippedPagesCount() {
+                        return Math.min(Math.ceil(this.page / this.VIEW_PAGE_BUTTON_COUNT) * this.VIEW_PAGE_BUTTON_COUNT, this.getPagesCount);
+                    }
+                },
+                watch : {
+                    page() {
+                        this.page = Math.min(this.getPagesCount, this.page);
+                        this.updatePages();
+                    },
+                    'wastes.length'() {
+                        this.page = Math.min(this.getPagesCount, this.page);
+                        this.updatePages();
+                    },
+                    view_transactions_count() {
+                        this.page = Math.min(1, this.getPagesCount);
+                        this.updatePages();
+                    }
+                },
+                methods : {
+                    updatePages() {
+                        this.pages = Array((this.getScippedPagesCount - 1) % this.VIEW_PAGE_BUTTON_COUNT + 1)
+                        .fill(0)
+                        .map((_, i) => this.page + i - (this.page - 1) % this.VIEW_PAGE_BUTTON_COUNT);
+                    },
+                    nextPages() {
+                        this.page = Math.min(this.page + this.VIEW_PAGE_BUTTON_COUNT, this.getPagesCount);
+                    },
+                    prevPages() {
+                        this.page = Math.max(this.page - this.VIEW_PAGE_BUTTON_COUNT, 1);
+                    }
+                }
+            })
+
+        </script>
     </body>
 </html>
