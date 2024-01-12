@@ -7,5 +7,7 @@ public enum Category {
     FAST_FOOD,
     BOOKS,
     STUDY,
-    VARIOUS_PRODUCTS
+    VARIOUS_PRODUCTS,
+    SALARY,
+    OTHER_INCOME
 }

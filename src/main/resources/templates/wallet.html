@@ -305,7 +305,16 @@ Bootstrap 5 Dashboard Admin Template
                                             <tr v-for="waste in getWastes" :key="waste.id">
                                                 <td scope="row"> {{ waste.date }}</td>
 
-                                                <td scope="row">{{ waste.category }}</td>
+                                                <td scope="row">
+                                                    <span class="badge" 
+                                                          v-bind:style="{
+                                                                color: '#fff!important',
+                                                                background: Math.random() > 0.5? 'brown' : 'purple'
+                                                          }"
+                                                    >
+                                                        {{ waste.category }}
+                                                    </span>
+                                                </td>
 
                                                 <td class="text-danger" scope="row">
                                                     <span class="me-1">-</span>
@@ -313,8 +322,8 @@ Bootstrap 5 Dashboard Admin Template
                                                 </td>
 
                                                 <td scope="row">
-                                                    <span class="badge text-bg-danger">
-                                                        Pending
+                                                    <span class="badge text-bg-success">
+                                                        Success
                                                     </span>
                                                 </td>
                                             </tr>
@@ -678,10 +687,7 @@ Bootstrap 5 Dashboard Admin Template
         </div>
 
         <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/apexcharts.min.js"></script>
-        <script src="js/custom.js"></script>
         <script src="js/vue.js"></script>
         <script type="module">
             
@@ -691,7 +697,6 @@ Bootstrap 5 Dashboard Admin Template
                 data: {
                     VIEW_PAGE_BUTTON_COUNT : 4,
 
-                    message: 'Hello Vue!',
                     wastes : null,
                     page : 1,
                     view_transactions_count : 10,
