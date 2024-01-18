@@ -1,7 +1,6 @@
 package steppp1518.database;
 
 import jakarta.persistence.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -17,6 +16,7 @@ public class Waste implements Cloneable {
     private Category category;
     private String email;
     private BigDecimal amount;
+    private UUID account;
 
     @PrePersist
     public void prePersist() {
@@ -55,12 +55,15 @@ public class Waste implements Cloneable {
         this.date = date;
     }
 
-    @Override
-    public Waste clone() throws CloneNotSupportedException {
-        return (Waste)super.clone();
-    }
-
     public UUID getId() {
         return id;
+    }
+
+    public UUID getAccount() {
+        return account;
+    }
+
+    public void setAccount(UUID account) {
+        this.account = account;
     }
 }

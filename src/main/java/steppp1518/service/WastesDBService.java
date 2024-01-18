@@ -2,14 +2,14 @@ package steppp1518.service;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import steppp1518.database.Waste;
 import steppp1518.database.WastesRepository;
 
 import java.util.Collection;
 import java.util.Date;
 
-@Component
+@Service
 public class WastesDBService implements WastesService {
     @Autowired
     WastesRepository wastesRepository;

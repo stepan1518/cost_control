@@ -25,7 +25,9 @@
 
 --SELECT * FROM wastes;
 
---DELETE FROM wastes WHERE email='abcd';]]></console>
+--DELETE FROM wastes WHERE email='abcd';
+
+SELECT * FROM bank_accounts;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -45,6 +47,7 @@
         <condition column="email" operator="=" value="" active="true" />
       </filter>
     </filter-actions>
+    <filter-actions connection-id="13c244e8-75b0-49a2-a1b2-d6444e0abe02" dataset="public.bank_accounts" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />

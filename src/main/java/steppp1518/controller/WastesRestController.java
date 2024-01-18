@@ -13,7 +13,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping(value = "/client")
-public class ClientRestController {
+public class WastesRestController {
     @Autowired
     @Qualifier("wastesDBService")
     private WastesService wastesService;

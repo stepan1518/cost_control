@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Collection;
 import java.util.UUID;
 
-public interface WastesRepository extends CrudRepository<Waste, UUID> {
-    Collection<Waste> findByEmail(String email);
+public interface BankAccountRepository extends CrudRepository<BankAccount, UUID> {
+    Collection<BankAccount> findByEmail(String email);
 }

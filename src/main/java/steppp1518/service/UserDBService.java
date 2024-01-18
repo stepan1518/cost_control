@@ -6,11 +6,11 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import steppp1518.database.Client;
 import steppp1518.database.ClientRepository;
 
-@Component
+@Service
 public class UserDBService implements UserService {
     @Autowired
     private ClientRepository clientRepository;
